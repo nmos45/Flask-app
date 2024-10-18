@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.film.label }}
+    {{ form.film() }}
+    {% for error in form.film.errors %}
+    {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.review.label }}
+    {{ form.review() }}
+    {% for error in form.review.errors %}
+    {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.score.label }}
+    {{ form.score() }}
+    {% for error in form.score.errors %}
+    {{ error }}
+    {% endfor %}
+
+    <br />
+    {{ form.submit() }}
+</form>
+<p>{{ message }}</p>
+<br/>
+<a href="{{ url_for('all_reviews') }}">all reviews</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.choice.label }}
+    {{ form.choice() }}
+    <br />
+    {{ form.Country.label }}
+    {{ form.Country() }}
+    <br />
+    {{ form.submit() }}
+</form>
+<a href="{{ url_for('index') }}">Home</a>
+<section>
+{% if Platform %}
+    {% for entry in Platform %}
+    <h1>{{ entry["title"] }}<h1>
+        <img src="{{ url_for('static', filename='img/' + entry['title'] + '.jpeg') }}" alt="{{ entry['title'] }}"/>
+        <p><a href="{{ url_for('streaming_platforms',film = entry['title'] ) }}">Film Details</a></p>
+        <p><a href="{{ url_for('watch_later',film = entry['title'] ) }}">Add to watch later</a></p>
+        <br />
+    {% endfor %}
+</section>
+<br/>
+<a href="{{ url_for('logout') }}">Logout</a>
+{% endif %}
+
+{% if message %}
+<p>{{ message }}</p>
+<br/>
+<a href="{{ url_for('logout') }}">Logout</a>
+{% endif %}
+
+
+{% endblock %}

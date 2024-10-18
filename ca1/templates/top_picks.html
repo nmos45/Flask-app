@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<table>
+    <caption>{{ caption }}</caption>
+    {% if top_picks %}
+    {% for entry in top_picks %}
+    <tr>
+        <td><img src="{{ url_for('static', filename='img/' + entry['title'] + '.jpeg') }}" alt="{{ entry['title'] }}"></td>
+        <td>{{ entry["title"] }}</td>
+        <td>{{ entry["director"] }}</td>
+        <td>{{ entry["cast"] }}</td>
+        <td>{{ entry["score"] }}</td>
+        <td><a href="{{ url_for('show_specific_reviews', film = entry['title']) }}">Reviews</a></td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+<br/>
+<a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Movies HQ</h1>
+        <ul>
+        <li><a href="{{ url_for('all_films') }}">Streaming Platforms</a></li>
+        <br/>
+        <li><a href="{{ url_for('logout') }}">logout</a></li>
+        <br/>
+        <li><a href="{{ url_for('Top_picks') }}">Top picks</a></li>
+        </ul>
+{% endblock %}

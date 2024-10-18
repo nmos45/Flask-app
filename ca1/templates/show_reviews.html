@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<table>
+    <caption>{{ caption }}</caption>
+    {% for review in reviews %}
+    <tr>
+        <td>{{ review["user_id"] }}</td>
+        <td>{{ review["film"] }}</td>
+        <td>{{ review["review"] }}</td>
+        <td>{{ review["score"] }}</td>
+        <td><a href="{{ url_for('watch_later',film = review['film'] ) }}">Add to watch later</a></td>
+    </tr>
+   {% endfor %} 
+</table>
+<br />
+<a href="{{ url_for('review') }}">Write a review</a>
+<br />
+<a href="{{ url_for('index') }}">Home</a>
+{% endblock %}

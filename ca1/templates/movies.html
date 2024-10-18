@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<table>
+    <caption>{{ caption }}</caption>
+    {% if platform %}
+    {% for entry in platform %}
+    <tr>
+        <th></th>
+        <th colspan="1.5">Film</th>
+        <th>Director</th>
+        <th>Country</th>
+        <th>Cast</th>
+        <th colspan="2">Score</th>
+
+    </tr>
+    <tr>
+        <td><img src="{{ url_for('static', filename='img/' + entry['title'] + '.jpeg') }}" alt="{{ entry['title'] }}"></td>
+        <td>{{ entry["title"] }}</td>
+        <td>{{ entry["director"] }}</td>
+        <td>{{ entry["country"] }}</td>
+        <td>{{ entry["cast"] }}</td>
+        <td>{{ entry["score"] }}</td>
+        <td><a href="{{ url_for('show_specific_reviews', film = entry['title']) }}">Reviews</a></td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+<br/>
+<a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}
